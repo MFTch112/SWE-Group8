@@ -2,7 +2,6 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -60,25 +59,20 @@ public class DBTest {
 	            System.out.println(e.getMessage());
 	        }
 	    }
-	  public void insert(File name) throws FileNotFoundException {
+	  public void insert(File stuff) throws FileNotFoundException {
 	        String sql = "INSERT INTO abc (html) VALUES(?)";
 	        System.out.println("pre-test");
 	        try (Connection conn = this.connect("test.db");
 	        	PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	        	System.out.println("post-test");
-	        	FileInputStream input = new FileInputStream(name);
+	        	FileInputStream input = new FileInputStream(stuff);
 	        	 
 	        	// set parameters
 	        	System.out.println("inputstream check");
 	        	//pstmt.setInt(1, 1);
 	        	System.out.println("int check");
-	        	//pstmt.setBlob(2, input);
-	        	pstmt.setBinaryStream(1, input, (int) name.length());
-	        	
-	        	System.out.println("Bin test");
-	            //pstmt.setBlob(1, name);
-	            //pstmt.setDouble(2, capacity);
-	            System.out.println("Reading file " + name.getAbsolutePath());
+	        	pstmt.setBinaryStream(1, input, (int) stuff.length());
+	            System.out.println("Reading file " + stuff.getAbsolutePath());
 	            System.out.println("Store file in the database.");
 	            pstmt.executeUpdate();
 	        } catch (SQLException e) {
