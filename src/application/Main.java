@@ -12,11 +12,19 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Sample.fxml"));
+	        Parent root = FXMLLoader.load(getClass().getResource("/application/Sample.fxml"));
+	        Scene scene = new Scene(root);
+	        primaryStage.setScene(scene);
+	        primaryStage.setTitle("Main");
+	        primaryStage.show();
+	        
+			/*
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("./Sample.fxml"));
 	        Parent root = loader.load();
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
+	        */
 			/*
 			BorderPane root = new BorderPane();
 			Scene scene = new Scene(root,400,400);
