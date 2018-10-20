@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="330.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
@@ -13,11 +14,11 @@
       <Button fx:id="btnfc" layoutX="355.0" layoutY="94.0" mnemonicParsing="false" onAction="#Button1Action" prefHeight="25.0" prefWidth="92.0" text="File" />
       <ListView fx:id="listview" layoutX="117.0" layoutY="94.0" prefHeight="25.0" prefWidth="223.0" />
       <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="94.0" prefHeight="25.0" prefWidth="92.0" text="Filename:" />
-      <ListView fx:id="fpath" layoutX="117.0" layoutY="132.0" prefHeight="25.0" prefWidth="330.0" />
-      <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="129.0" prefHeight="32.0" prefWidth="92.0" text="Location:" />
+      <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="145.0" prefHeight="32.0" prefWidth="92.0" text="Location:" />
       <Label layoutX="50.0" layoutY="190.0" prefHeight="32.0" prefWidth="69.0" text="Password:" />
       <PasswordField fx:id="pw" layoutX="118.0" layoutY="194.0" prefHeight="25.0" prefWidth="266.0" />
       <Button fx:id="fbtn" layoutX="395.0" layoutY="194.0" mnemonicParsing="false" onAction="#validate" text="Button" />
       <CheckBox layoutX="50.0" layoutY="258.0" mnemonicParsing="false" text="Encrypt" />
+      <TextArea fx:id="location" layoutX="116.0" layoutY="142.0" prefHeight="38.0" prefWidth="332.0" />
     </children>
 </AnchorPane>
