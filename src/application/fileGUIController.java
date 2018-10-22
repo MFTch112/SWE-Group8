@@ -11,6 +11,9 @@ import javafx.scene.control.TextField;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+
 import backend.fileEncrypt;
 import javafx.event.ActionEvent;
 import javafx.scene.control.RadioButton;
@@ -31,6 +34,10 @@ public class fileGUIController implements Initializable {
 	private RadioButton decryptButton;
 	@FXML
 	private TextField test;
+	@FXML
+	private TextField dirLocation;
+	@FXML
+	private JFXButton dirButton;
 	
 	public void browse(ActionEvent event){
 		FileChooser fileChooser = new FileChooser();
@@ -40,16 +47,37 @@ public class fileGUIController implements Initializable {
 		}
 
 	}
+	public void setDir(ActionEvent event) {
+		FileChooser fileChooser = new FileChooser();
+		File selectedFile = fileChooser.showOpenDialog(btnfc.getScene().getWindow());
+		if(selectedFile!=null) {
+			dirLocation.setText(selectedFile.getAbsolutePath());
+		}
+	}
 	public void submit(ActionEvent event) {
 		if(!test.getText().isEmpty() && !pw.getText().isEmpty()) {
 			if(encryptButton.isSelected()) {
-				encrypt();
-				getMessage("Encryption complete. File can be found in source folder");
+				if(!dirLocation.getText().isEmpty()) {
+					encrypt(dirLocation.getText());
+					getMessage("Encryption complete. File can be found in source folder");
+				}
+				else {
+					encrypt();
+					getMessage("Encryption complete. File can be found in source folder");
+				}
+				
 			}
 			else if(decryptButton.isSelected()) {
 				if(test.getText().substring(test.getText().length()-4).equals(".enc")){
-					decrypt();
-					getMessage("Decryption complete. File can be found in source folder");
+					if(!dirLocation.getText().isEmpty()) {
+						decrypt(dirLocation.getText());
+						getMessage("Decryption complete. File can be found in source folder");
+					}
+					else {
+						decrypt();
+						getMessage("Decryption complete. File can be found in source folder");
+					}
+					
 				}
 				else {
 					Alert alert = new Alert(AlertType.INFORMATION);
@@ -87,11 +115,33 @@ public class fileGUIController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	public void encrypt(String dir){
+		try {
+			 File fileMan = new File(test.getText());
+			 fileEncrypt e=new fileEncrypt();
+			 e.initEnc(fileMan.getPath(),dir,pw.getText(), fileMan);
+		} 
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
 	public void decrypt() {
 		try {
 			 File fileMan = new File(test.getText());
 			 fileEncrypt e=new fileEncrypt();
 			 e.initDec(fileMan.getPath(),pw.getText(), fileMan);
+		} 
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	public void decrypt(String dir) {
+		try {
+			 File fileMan = new File(test.getText());
+			 fileEncrypt e=new fileEncrypt();
+			 e.initDec(fileMan.getPath(),dir,pw.getText(), fileMan);
 		} 
 		catch (Exception e) {
 			// TODO: handle exception
@@ -109,6 +159,7 @@ public class fileGUIController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		test.setEditable(false);
+		dirLocation.setEditable(false);
 	}
 
 

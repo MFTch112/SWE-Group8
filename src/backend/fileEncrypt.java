@@ -137,6 +137,36 @@ import javax.swing.JFileChooser;
 			}
 		}
 		
+		public void initEnc(String path, String dir, String password, File file) {
+			try {
+				String fileName = file.getName();
+				String tempFileName=fileName+".enc";
+				File target= new File(dir+file.getName());
+				Files.copy(file.toPath(), target.toPath(), StandardCopyOption.REPLACE_EXISTING);
+				MessageDigest md=  MessageDigest.getInstance("MD5");
+				md.update(password.getBytes());
+				password=md.toString().substring(0, 16);
+				copy(Cipher.ENCRYPT_MODE, fileName, tempFileName, password);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		public void initDec(String path, String dir, String password, File file) {
+			try {
+				String fileName = file.getName();
+				String tempFileName=fileName.substring(0, fileName.length()-4);
+				File target= new File(dir+"(copy)"+file.getName());
+				Files.copy(file.toPath(), target.toPath(), StandardCopyOption.REPLACE_EXISTING);
+				MessageDigest md=  MessageDigest.getInstance("MD5");
+				md.update(password.getBytes());
+				password=md.toString().substring(0, 16);
+				copy(Cipher.DECRYPT_MODE, fileName, tempFileName, password);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
 
 /*
 		public static void main(String[] args){
