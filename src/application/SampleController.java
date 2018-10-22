@@ -35,7 +35,7 @@ public class SampleController implements Initializable {
 		else {
 			System.out.println("test failed");
 		}
-		Parent registParent = FXMLLoader.load(getClass().getResource("Placeholder.fxml"));
+		Parent registParent = FXMLLoader.load(getClass().getResource("fileGUI.fxml"));
 		Scene registScene =new Scene(registParent);
 		Stage window = (Stage) ((Node) event2.getSource()).getScene().getWindow();
 		window.setScene(registScene);
