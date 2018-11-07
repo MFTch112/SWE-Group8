@@ -7,7 +7,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
 <AnchorPane prefHeight="285.0" prefWidth="549.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
@@ -22,12 +21,11 @@
       </AnchorPane>
       <Pane prefHeight="285.0" prefWidth="349.0" style="-fx-background-color: gray;">
          <children>
-            <ImageView fitHeight="224.0" fitWidth="246.0" layoutX="63.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="320.0" fitWidth="322.0" layoutX="14.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../files/facebook_profile_image.png" />
+                  <Image url="@../../supplemental/pexels-photo-450035.jpeg" />
                </image>
             </ImageView>
-            <HBox prefHeight="46.0" prefWidth="349.0" />
          </children>
       </Pane>
    </children>
