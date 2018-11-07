@@ -5,6 +5,5 @@
 	<classpathentry kind="lib" path="jar files/jars/jfoenix-8.0.7.jar"/>
 	<classpathentry kind="lib" path="jar files/jars/jsoup-1.11.3.jar"/>
 	<classpathentry kind="lib" path="jar files/jars/sqlite-jdbc-3.23.1 (1).jar"/>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
